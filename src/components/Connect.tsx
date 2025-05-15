@@ -1,7 +1,7 @@
 import { useState, useEffect, ReactNode, useRef } from 'react'
 import * as _ from 'lodash'
 import './Connect.scss'
-const BOARD_SIZE = 14;   // 网格大小
+const BOARD_SIZE = 10;   // 网格大小
 const TYPE_SIZE = 30;    // 图案类型数量
 const GAME_STATUS = {
     HOME: 0,

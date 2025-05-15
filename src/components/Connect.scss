@@ -1,0 +1,163 @@
+@use 'sass:color';
+
+// 定义变量
+$border-color: #666666;
+$board-border-color: #4a90e2;
+$board-border-width: 3px;
+$main-color: #8bcff7;
+$secondary-color: #9aecc0;
+$large-font-size: 30px;
+$middle-font-size: 20px;
+$small-font-size: 16px;
+$button-hover-darken: 10%;
+$transition-duration: 0.3s;
+.connect {
+  display: flex;
+  padding: 20px;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #e3f2fd 0%, #f3e5f5 100%);
+  flex-direction: column;
+  box-sizing: border-box;
+  .board {
+    display: flex;
+    overflow: hidden;
+    margin-bottom: 20px;
+    border: $board-border-width solid $board-border-color;
+    border-radius: 8px;
+    background-color: rgb(255 255 255 / 90%);
+    box-shadow: 0 4px 12px rgb(0 0 0 / 10%);
+    flex: 1;
+    flex-direction: column;
+
+    /* 排行榜样式 */
+    h1 {
+      margin: 15px 0;
+      font-size: 24px;
+      text-align: center;
+      color: #2c3e50;
+    }
+    .rank-list {
+      padding: 15px;
+      &-header {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+        padding: 10px 20px;
+        font-weight: bold;
+        border-bottom: 2px solid rgba($border-color, 0.2);
+        .rank, .time {
+          width: 50px;
+          text-align: center;
+        }
+      }
+      div:not(.rank-list-header) {
+        display: flex;
+        justify-content: space-between;
+        margin: 4px 0;
+        padding: 8px 20px;
+        border-radius: 4px;
+        transition: background-color $transition-duration ease;
+        &:hover {
+          background-color: rgba($main-color, 0.1);
+        }
+        .rank {
+          width: 50px;
+          font-weight: 500;
+          text-align: center;
+          color: #4a90e2;
+        }
+        .time {
+          width: 80px;
+          text-align: center;
+          color: #2c3e50;
+        }
+      }
+    }
+
+    /* 排行榜样式结束 */
+    .board-row {
+      flex: 1;
+      display: flex;
+      border-bottom: 1px solid rgba($border-color, 0.3);
+      &:last-child {
+        border-bottom: none;
+      }
+      .board-col {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: $large-font-size;
+        font-weight: 600;
+        border-right: 1px solid rgba($border-color, 0.3);
+        color: #2c3e50;
+        transition: all $transition-duration ease;
+        flex: 1;
+        cursor: pointer;
+        &:last-child {
+          border-right: none;
+        }
+        &:hover:not(.selected) {
+          background-color: rgb(0 0 0 / 5%) !important;
+        }
+        &.selected {
+          background-color: rgb(107 107 107) !important;
+          box-shadow: inset 0 0 10px white;
+        }
+      }
+    }
+  }
+  .control {
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    background-color: rgb(255 255 255 / 90%);
+    box-shadow: 0 4px 12px rgb(0 0 0 / 10%);
+    h1 {
+      margin: 0 0 15px;
+      font-size: $middle-font-size;
+      font-weight: 600;
+      color: #2c3e50;
+    }
+    .time,
+    .remainder {
+      margin: 10px 0;
+      font-size: $middle-font-size;
+      font-weight: bold;
+      color: #4a90e2;
+    }
+    button {
+      margin: 8px;
+      padding: 12px 24px;
+      font-size: $small-font-size;
+      font-weight: 600;
+      border: none;
+      border-radius: 25px;
+      transition: all $transition-duration ease;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      &.start-btn {
+        color: white;
+        background: linear-gradient(135deg, $main-color 0%, $secondary-color 100%);
+        &:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 4px 12px rgba($main-color, 0.4);
+        }
+      }
+      &.again-btn {
+        color: white;
+        background: linear-gradient(135deg, $secondary-color 0%, $main-color 100%);
+      }
+      &.back-btn {
+        color: #666666;
+        background: #f0f0f0;
+        &:hover {
+          /* stylelint-disable-next-line scss/no-global-function-names */
+          background: darken(#f0f0f0, 5%);
+        }
+      }
+    }
+  }
+}
